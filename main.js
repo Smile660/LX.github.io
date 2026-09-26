@@ -44,7 +44,6 @@ function toggle(buttonId, targetId) {
   button.addEventListener('click', () => { const expanded = button.getAttribute('aria-expanded') !== 'true'; button.setAttribute('aria-expanded',String(expanded)); target.classList.toggle('open',expanded); });
 }
 toggle('menu-toggle','navigation'); toggle('contact-toggle','author-links');
-main.addEventListener('click',e=>{const trigger=e.target.closest('.post-title,.post-open');if(!trigger)return;const article=trigger.closest('article.post');if(!article)return;const open=article.classList.toggle('open');article.querySelector('.post-full').hidden=!open;const btn=article.querySelector('.post-open');btn.textContent=open?'收起':'阅读全文';if(btn!==trigger)btn.setAttribute('aria-expanded',String(open));trigger.setAttribute('aria-expanded',String(open));});
 const figure = `<figure class="research-figure"><svg viewBox="0 0 760 190" role="img" aria-labelledby="diagram-title diagram-desc"><title id="diagram-title">研究框架示意图</title><desc id="diagram-desc">光伏、储能、负荷接入配电网，通过协调控制支撑安全运行、公平调节和市场参与。</desc><g font-family="Arial, Microsoft YaHei, sans-serif" text-anchor="middle"><g fill="#fff" stroke="#71858f" stroke-width="1.4"><rect x="18" y="24" width="150" height="40" rx="3"/><rect x="18" y="77" width="150" height="40" rx="3"/><rect x="18" y="130" width="150" height="40" rx="3"/><rect x="286" y="63" width="187" height="68" rx="3"/><rect x="591" y="24" width="150" height="40" rx="3"/><rect x="591" y="77" width="150" height="40" rx="3"/><rect x="591" y="130" width="150" height="40" rx="3"/></g><g fill="none" stroke="#71858f" stroke-width="1.5"><path d="M168 44h52v106h-52m52-53h66m-66 0h-52M473 97h63m55-53h-55v106h55m-55-53h55"/></g><g fill="#425964" font-size="18"><text x="93" y="51">分布式光伏</text><text x="93" y="104">储能系统</text><text x="93" y="157">可调负荷</text><text x="380" y="92" font-weight="600">配电网协调控制</text><text x="380" y="115" font-size="14" fill="#647780">Local sensing · Coordination</text><text x="666" y="51">安全运行</text><text x="666" y="104">公平调节</text><text x="666" y="157">市场参与</text></g></g></svg><figcaption>研究框架：资源协同、运行安全与市场参与</figcaption></figure>`;
 function research() {
   const r=profile.research;
@@ -57,17 +56,27 @@ function publications() {
 }
 function talks(){return '<h1>Talks</h1><p class="small-note">学术报告与会议交流</p>'+(profile.talks.length?profile.talks.map(t=>`<article class="record"><h3>${escapeHTML(t.title)}</h3><p>${escapeHTML(t.event)}</p><p class="meta">${escapeHTML(t.date)} · ${escapeHTML(t.location)}</p>${link('查看报告',t.url)}</article>`).join(''):empty('暂无公开报告信息。'));}
 function portfolio(){return '<h1>Portfolio</h1><p class="small-note">研究项目、代码与复现资料</p>'+(profile.projects.length?profile.projects.map(p=>`<article class="record"><h3>${escapeHTML(p.title)}</h3><p>${escapeHTML(p.description)}</p><div>${(p.tags||[]).map(t=>`<span class="tag">${escapeHTML(t)}</span>`).join('')}</div>${link('查看项目',p.url)}</article>`).join(''):empty('暂无公开项目。'));}
-function blog(){const flat=t=>String(t).replace(/\s+/g,' ').trim();const excerpt=t=>{const s=flat(t);if(s.length<=120)return s;const cut=s.slice(0,120);const m=cut.match(/.*[。！？；]/);return (m?m[0]:cut)+'…';};const body=t=>escapeHTML(t).split('\n\n').map(x=>`<p>${x.trim().replace(/\n/g,'<br>')}</p>`).join('');return '<h1>Blog Posts</h1><p class="small-note">研究笔记与方法分享</p>'+(profile.posts.length?profile.posts.map(p=>`<article class="record post"><h3><button type="button" class="post-title">${escapeHTML(p.title)}</button></h3><p class="meta">${escapeHTML(p.date)}</p><p class="post-excerpt">${escapeHTML(excerpt(p.text))}</p><button type="button" class="post-open" aria-expanded="false">阅读全文</button><div class="post-full" hidden>${body(p.text)}</div></article>`).join(''):empty('研究笔记整理中。'));}
+const postParagraphs=t=>escapeHTML(t).split('\n\n').map(x=>`<p>${x.trim().replace(/\n/g,'<br>')}</p>`).join('');
+const postExcerpt=t=>{const s=String(t).replace(/\s+/g,' ').trim();if(s.length<=120)return s;const cut=s.slice(0,120);const m=cut.match(/.*[。！？；]/);return (m?m[0]:cut)+'…';};
+function blog(){return '<h1>Blog Posts</h1><p class="small-note">研究笔记与方法分享</p>'+(profile.posts.length?profile.posts.map((p,i)=>`<article class="record post"><h3><a class="post-title" href="#post/${i}">${escapeHTML(p.title)}</a></h3><p class="meta">${escapeHTML(p.date)}</p><p class="post-excerpt">${escapeHTML(postExcerpt(p.text))}</p><a class="post-open" href="#post/${i}">阅读全文</a></article>`).join(''):empty('研究笔记整理中。'));}
+function postPage(p){return `<article class="record post-detail"><h1>${escapeHTML(p.title)}</h1><p class="meta">${escapeHTML(p.date)}</p><div class="post-full">${postParagraphs(p.text)}</div><p class="post-back"><a href="#blog">← 返回 Blog Posts</a></p></article>`;}
 function cv(){const c=profile.cvPage;const list=items=>`<ul class="interest-list">${items.map(i=>`<li>${escapeHTML(i)}</li>`).join('')}</ul>`;return `<h1>Curriculum Vitae</h1>${link('下载完整简历（PDF）',profile.cv,'download-link')}<h2>${escapeHTML(c.directionsTitle)}</h2>${list(c.directions)}<h2>${escapeHTML(c.educationTitle)}</h2>${list(c.education)}<h2>${escapeHTML(c.publicationsTitle)}</h2>${c.sections.map(s=>`<h3>${escapeHTML(s.title)}</h3>${list(s.items)}`).join('')}`;}
 function projects(){const p=profile.researchProjects;return `<h1>${escapeHTML(p.title)}</h1><p class="small-note">${escapeHTML(p.note)}</p>`+(p.items.length?p.items.map(x=>`<article class="record"><h3>${escapeHTML(x.title)}</h3><p class="meta">${escapeHTML(x.funder)} · ${escapeHTML(x.program)} · ${escapeHTML(x.number)}</p><p class="meta">${escapeHTML(x.period)} · ${escapeHTML(x.budget)} · ${escapeHTML(x.role)}</p>${x.status?`<span class="tag">${escapeHTML(x.status)}</span>`:''}</article>`).join(''):empty('暂无公开项目信息。'));}
 const pages={research,publications,talks,portfolio,blog,cv,projects};
 const titles={research:'What I’m Doing',publications:'Publications',talks:'Talks',portfolio:'Portfolio',blog:'Blog Posts',cv:'Curriculum Vitae',projects:'Projects'};
 function render(){
   const hash=location.hash.slice(1); if(hash==='main'){ main.focus(); return; }
-  const page=Object.hasOwn(pages,hash)?hash:'research';
-  main.innerHTML=pages[page]();
-  document.title=`${titles[page]} · ${profile.name}`;
-  document.querySelectorAll('.masthead a').forEach(a=>{if(a.hash===`#${page}`)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+  const postMatch=hash.match(/^post\/(\d+)$/), post=postMatch?profile.posts[Number(postMatch[1])]:null;
+  if(post){
+    main.innerHTML=postPage(post);
+    document.title=`${post.title} · ${profile.name}`;
+    document.querySelectorAll('.masthead a').forEach(a=>{a.hash==='#blog'?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current');});
+  } else {
+    const page=Object.hasOwn(pages,hash)?hash:'research';
+    main.innerHTML=pages[page]();
+    document.title=`${titles[page]} · ${profile.name}`;
+    document.querySelectorAll('.masthead a').forEach(a=>{if(a.hash===`#${page}`)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
+  }
   document.getElementById('navigation').classList.remove('open');
   document.getElementById('menu-toggle').setAttribute('aria-expanded','false');
 }
