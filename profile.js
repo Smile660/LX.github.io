@@ -4,8 +4,8 @@
  */
 window.PROFILE = {
   name: '刘笑',
-  /*initials: '刘',*/
   role: '电力系统研究者',
+  /*指导老师：'刘友波'*/
   institution: '四川大学 / 电气工程学院',
   location: '中国 · 成都',
   bio: '关注分布式光伏、虚拟电厂与配电网安全运行，探索面向新能源系统的优化与控制方法。',
@@ -36,10 +36,10 @@ window.PROFILE = {
         ]
       },
       { title: '会议论文', items: [
-        'Y. Jian, L. Xiao, D. Mi, S. Dongran, L. Li and H. LianSheng, "Research on Constant Power Loads Stability of DC Microgrid Based on Machine Learning," 2022 4th International Conference on Smart Power & Internet Energy Systems (SPIES), Beijing, China, 2022, pp. 1386-1390.',
-        'X. Liu, Y. Liu, Y. Chen, Z. Tang, H. Gao and Z. Li, "Federated Reinforcement Learning for PV Inverters Enabled Voltage Regulation of Medium-Low Voltage Unbalanced Distribution Grids," 2026 11th Asia Conference on Power and Electrical Engineering (ACPEE), Macao, Macao, 2026, pp. 1081-1085.'
+        'X. Liu, Y. Liu, Y. Chen, Z. Tang, H. Gao and Z. Li, "Federated Reinforcement Learning for PV Inverters Enabled Voltage Regulation of Medium-Low Voltage Unbalanced Distribution Grids," 2026 11th Asia Conference on Power and Electrical Engineering (ACPEE), Macao, Macao, 2026, pp. 1081-1085.',
+        'Y. Jian, L. Xiao, D. Mi, S. Dongran, L. Li and H. LianSheng, "Research on Constant Power Loads Stability of DC Microgrid Based on Machine Learning," 2022 4th International Conference on Smart Power & Internet Energy Systems (SPIES), Beijing, China, 2022, pp. 1386-1390.'
       ] },
-      { title: '奖项', items: ['还在努力拥有'] }
+      { title: '奖项', items: ['正在努力拥有！'] }
     ]
   },
   updated: '2026-09-13',
