@@ -39,7 +39,7 @@ window.PROFILE = {
         'Y. Jian, L. Xiao, D. Mi, S. Dongran, L. Li and H. LianSheng, "Research on Constant Power Loads Stability of DC Microgrid Based on Machine Learning," 2022 4th International Conference on Smart Power & Internet Energy Systems (SPIES), Beijing, China, 2022, pp. 1386-1390.',
         'X. Liu, Y. Liu, Y. Chen, Z. Tang, H. Gao and Z. Li, "Federated Reinforcement Learning for PV Inverters Enabled Voltage Regulation of Medium-Low Voltage Unbalanced Distribution Grids," 2026 11th Asia Conference on Power and Electrical Engineering (ACPEE), Macao, Macao, 2026, pp. 1081-1085.'
       ] },
-      { title: '项目研究', items: ['待补充。'] }
+      { title: '奖项', items: ['正在努力拥有！'] }
     ]
   },
   updated: '2026-09-13',
