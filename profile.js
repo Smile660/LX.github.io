@@ -35,7 +35,10 @@ window.PROFILE = {
           '刘笑,杨建,李力,等.基于机器学习的带被动阻尼直流微电网系统的稳定性检测.电工技术学报,2024,39(8):2281-2293+2324.'
         ]
       },
-      { title: '会议论文', items: ['待补充。'] },
+      { title: '会议论文', items: [
+        '[1] 杨建,刘笑,董密,等.Research on Constant Power Loads Stability of DC Microgrid Based on Machine Learning[C]//2022 4th International Conference on Smart Power & Internet Energy Systems (SPIES).IEEE,2022:1386-1390.',
+        '[2] 刘笑,刘友波,陈月华,等.Federated Reinforcement Learning for PV Inverters Enabled Voltage Regulation of Medium-Low Voltage Unbalanced Distribution Grids[C]//2026 11th Asia Conference on Power and Electrical Engineering (ACPEE).IEEE,2026.'
+      ] },
       { title: '项目研究', items: ['待补充。'] }
     ]
   },
