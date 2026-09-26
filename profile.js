@@ -40,8 +40,9 @@ window.PROFILE = {
         'X. Liu, Y. Liu, Y. Chen, Z. Tang, H. Gao and Z. Li, "Federated Reinforcement Learning for PV Inverters Enabled Voltage Regulation of Medium-Low Voltage Unbalanced Distribution Grids," 2026 11th Asia Conference on Power and Electrical Engineering (ACPEE), Macao, Macao, 2026, pp. 1081-1085.',
         'Y. Jian, L. Xiao, D. Mi, S. Dongran, L. Li and H. LianSheng, "Research on Constant Power Loads Stability of DC Microgrid Based on Machine Learning," 2022 4th International Conference on Smart Power & Internet Energy Systems (SPIES), Beijing, China, 2022, pp. 1386-1390.'
       ] },
-      { title: '奖项', items: ['正在努力拥有！'] }
-    ]
+    ],
+    awardsTitle: '奖项',
+    awards: ['正在努力拥有！']
   },
   updated: '2026-09-13',
   research: {
@@ -59,7 +60,12 @@ window.PROFILE = {
       { title: '多主体协作与收益分配', question: '如何协调不同参与主体的安全责任与经济收益？', method: '围绕安全责任、盈利贡献和长期参与，研究多维公平准则与收益分配机制。' }
     ],
     openTitle: '开放研究与交流',
-    openText: '我希望通过这一主页分享研究思路，促进电力系统优化、控制的交流。欢迎围绕相关研究问题开展讨论。'
+    openText: '我希望通过这一主页分享研究思路，促进电力系统优化、控制的交流。欢迎围绕相关研究问题开展讨论。',
+    aboutTitle: 'About me',
+    about: [
+      '我目前在四川大学电气工程学院攻读电气工程专业博士学位，导师为刘友波教授。',
+      '我的研究重点是配电网运行安全、光储边缘智能调控，探索深度学习、强化学习等在电力系统领域的创新应用。'
+    ]
   },
   // 用真实论文替换示例；可添加任意条目。year 用于分组。
   publications: [
