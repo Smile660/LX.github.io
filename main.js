@@ -23,8 +23,12 @@ const symbols = {
   scholar: '<path d="m2 8 10-5 10 5-10 5-10-5Zm4 3v6q6 5 12 0v-6M22 8v9"/>'
 };
 function icon(name) {return `<svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${symbols[name] || symbols.link}</svg>`;}
-for (const [id, value] of Object.entries({'author-name':profile.name,'author-role':profile.role,'author-advisor':profile.advisor?`指导老师：${profile.advisor}`:'','author-bio':profile.bio,'footer-name':profile.name,'year':new Date().getFullYear(),'updated':profile.updated})) document.getElementById(id).textContent = value;
-if(!profile.advisor) document.getElementById('author-advisor').remove();
+for (const [id, value] of Object.entries({'author-name':profile.name,'author-role':profile.role,'author-bio':profile.bio,'footer-name':profile.name,'year':new Date().getFullYear(),'updated':profile.updated})) document.getElementById(id).textContent = value;
+const advisorEl=document.getElementById('author-advisor');
+if(profile.advisor){
+  const advURL=safeURL(profile.advisorURL);
+  advisorEl.innerHTML=`指导老师：${advURL?`<a href="${escapeHTML(advURL)}" target="_blank" rel="noopener noreferrer">${escapeHTML(profile.advisor)}</a>`:escapeHTML(profile.advisor)}`;
+}else advisorEl.remove();
 document.getElementById('updated').dateTime = profile.updated;
 const avatar = document.getElementById('avatar');
 avatar.textContent = profile.initials || profile.name.slice(0,1);
