@@ -23,7 +23,8 @@ const symbols = {
   scholar: '<path d="m2 8 10-5 10 5-10 5-10-5Zm4 3v6q6 5 12 0v-6M22 8v9"/>'
 };
 function icon(name) {return `<svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${symbols[name] || symbols.link}</svg>`;}
-for (const [id, value] of Object.entries({'author-name':profile.name,'author-role':profile.role,'author-bio':profile.bio,'footer-name':profile.name,'year':new Date().getFullYear(),'updated':profile.updated})) document.getElementById(id).textContent = value;
+for (const [id, value] of Object.entries({'author-name':profile.name,'author-role':profile.role,'author-advisor':profile.advisor?`指导老师：${profile.advisor}`:'','author-bio':profile.bio,'footer-name':profile.name,'year':new Date().getFullYear(),'updated':profile.updated})) document.getElementById(id).textContent = value;
+if(!profile.advisor) document.getElementById('author-advisor').remove();
 document.getElementById('updated').dateTime = profile.updated;
 const avatar = document.getElementById('avatar');
 avatar.textContent = profile.initials || profile.name.slice(0,1);
@@ -38,7 +39,15 @@ const contacts = [
   ['link', 'CV (PDF)', profile.cv], ['link', 'ResearchGate', profile.links.researchgate],
   ['link', 'GitHub', profile.links.github], ['link', 'LinkedIn', profile.links.linkedin]
 ];
-document.getElementById('author-links').innerHTML = contacts.filter(([type,label,url]) => label && (['location','institution'].includes(type) || safeURL(url))).map(([type,label,url]) => `<li>${icon(type)}${url ? link(label,url) : `<span>${escapeHTML(label)}</span>`}</li>`).join('');
+const emailItem=(label,url)=>{const addr=url.replace(/^mailto:/,'');return `<li class="contact-email">${icon('email')}<span class="contact-label">${escapeHTML(label)}</span><div class="email-pop"><p class="email-pop-title">Email</p><p class="email-pop-addr">${escapeHTML(addr).replace('@',' (at) ')}</p>${link('Send Email',url,'email-pop-btn')}</div></li>`;};
+document.getElementById('author-links').innerHTML = contacts.filter(([type,label,url]) => label && (['location','institution'].includes(type) || safeURL(url))).map(([type,label,url]) => type==='email' ? emailItem(label,url) : `<li>${icon(type)}${url ? link(label,url) : `<span>${escapeHTML(label)}</span>`}</li>`).join('');
+const emailLi=document.querySelector('.contact-email');
+if(emailLi){
+  emailLi.addEventListener('mouseenter',()=>emailLi.classList.add('open'));
+  emailLi.addEventListener('focusin',()=>emailLi.classList.add('open'));
+  emailLi.addEventListener('click',e=>{if(!e.target.closest('a'))emailLi.classList.remove('open');});
+  emailLi.addEventListener('keydown',e=>{if(e.key==='Escape')emailLi.classList.remove('open');});
+}
 function toggle(buttonId, targetId) {
   const button = document.getElementById(buttonId), target = document.getElementById(targetId);
   button.addEventListener('click', () => { const expanded = button.getAttribute('aria-expanded') !== 'true'; button.setAttribute('aria-expanded',String(expanded)); target.classList.toggle('open',expanded); });

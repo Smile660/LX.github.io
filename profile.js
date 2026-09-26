@@ -5,12 +5,12 @@
 window.PROFILE = {
   name: '刘笑',
   role: '电力系统研究者',
-  /*指导老师：'刘友波'*/
+  advisor: '刘友波',
   institution: '四川大学 / 电气工程学院',
   location: '中国 · 成都',
   bio: '关注分布式光伏、虚拟电厂与配电网安全运行，探索面向新能源系统的优化与控制方法。',
   photo: 'assets/avatar_final.jpg', // 例如 'assets/avatar.jpg'
-  email: '', // 例如 'yourname@university.edu'
+  email: '2024323030006@stu.scu.edu.cn', // 例如 'yourname@university.edu'
   links: { scholar: '', orcid: '', github: '', researchgate: '', linkedin: '' },
   cv: '', // 例如 'assets/cv.pdf'
   cvPage: {
