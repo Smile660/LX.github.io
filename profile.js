@@ -18,8 +18,8 @@ window.PROFILE = {
     directions: ['配电网安全调节', '光储型虚拟电厂与收入分配'],
     educationTitle: '教育背景',
     education: [
-      '（1）2024-09至2028-06（拟毕业时间），四川大学，电气工程学院，博士',
-      '（2）2026-09至2027-09（拟计划出国联合培养时间，目前已拿到国家留学基金委资助资格），澳大利亚，昆士兰科技大学，电气工程与机器人学院，联合培养博士',
+      '（1）2024-09至，四川大学，电气工程学院，博士',
+      '（2）2026-09至2027-09（拟计划），澳大利亚，昆士兰科技大学，电气工程与机器人学院，联合培养博士',
       '（3）2021-09至2024-06，中南大学，自动化学院，硕士',
       '（4）2017-09至2021-06，燕山大学，电气工程学院，学士'
     ],
@@ -36,8 +36,8 @@ window.PROFILE = {
         ]
       },
       { title: '会议论文', items: [
-        '[1] 杨建,刘笑,董密,等.Research on Constant Power Loads Stability of DC Microgrid Based on Machine Learning[C]//2022 4th International Conference on Smart Power & Internet Energy Systems (SPIES).IEEE,2022:1386-1390.',
-        '[2] 刘笑,刘友波,陈月华,等.Federated Reinforcement Learning for PV Inverters Enabled Voltage Regulation of Medium-Low Voltage Unbalanced Distribution Grids[C]//2026 11th Asia Conference on Power and Electrical Engineering (ACPEE).IEEE,2026.'
+        'J. Yang, X. Liu, M. Dong, D. Song, L. Li and L. Huang, "Research on Constant Power Loads Stability of DC Microgrid Based on Machine Learning," 2022 4th International Conference on Smart Power & Internet Energy Systems (SPIES), Beijing, China, 2022, pp. 1386-1390.',
+        'X. Liu, Y. Liu, Y. Chen, Z. Tang, H. Gao and Z. Li, "Federated Reinforcement Learning for PV Inverters Enabled Voltage Regulation of Medium-Low Voltage Unbalanced Distribution Grids," 2026 11th Asia Conference on Power and Electrical Engineering (ACPEE), Macao, Macao, 2026, pp. 1081-1085.'
       ] },
       { title: '项目研究', items: ['待补充。'] }
     ]
