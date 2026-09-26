@@ -39,7 +39,7 @@ const contacts = [
   ['link', 'CV (PDF)', profile.cv], ['link', 'ResearchGate', profile.links.researchgate],
   ['link', 'GitHub', profile.links.github], ['link', 'LinkedIn', profile.links.linkedin]
 ];
-const emailItem=(label,url)=>{const addr=url.replace(/^mailto:/,'');return `<li class="contact-email">${icon('email')}<span class="contact-label">${escapeHTML(label)}</span><div class="email-pop"><p class="email-pop-title">Email</p><p class="email-pop-addr">${escapeHTML(addr).replace('@',' (at) ')}</p>${link('Send Email',url,'email-pop-btn')}</div></li>`;};
+const emailItem=(label,url)=>{const addr=url.replace(/^mailto:/,'');return `<li class="contact-email">${icon('email')}<span class="contact-label">${escapeHTML(label)}</span><div class="email-pop"><p class="email-pop-title">Email</p><p class="email-pop-addr">${escapeHTML(addr).replace('@',' (at) ')}</p><a class="email-pop-btn" href="${escapeHTML(url)}">${icon('email')}<span>Send Email</span></a></div></li>`;};
 document.getElementById('author-links').innerHTML = contacts.filter(([type,label,url]) => label && (['location','institution'].includes(type) || safeURL(url))).map(([type,label,url]) => type==='email' ? emailItem(label,url) : `<li>${icon(type)}${url ? link(label,url) : `<span>${escapeHTML(label)}</span>`}</li>`).join('');
 const emailLi=document.querySelector('.contact-email');
 if(emailLi){
