@@ -68,7 +68,9 @@ window.PROFILE = {
     {year: '2024', title: '基于机器学习的带被动阻尼直流微电网系统的稳定性检测', authors: '刘笑, 杨建, 李力, 等', venue: '电工技术学报 · 2024 · 39(8): 2281-2293+2324', summary: '直流微电网中恒功率负荷(CPL)具有负阻尼特性，该特性会降低系统稳定性。为此，通过在滤波器上添加被动阻尼来增强直流微电网系统的稳定性，并提出一种基于机器学习的方法来检测带被动阻尼直流微电网系统的稳定性。首先，建立带被动阻尼直流微电网系统的小信号模型，以此来确定影响系统稳定性的参数。其次，以所选系统参数为变量建立仿真场景，以此来获取用于机器学习算法训练的数据集。再次，提出一种基于轻量型梯度提升机(LGBM)的直流微电网稳定性检测模型，并采用沙普利加解释法(SHAP)分析所选参数对LGBM预测结果和直流微电网系统稳定性的影响。最后，通过仿真和硬件在环实验验证所提方法的有效性和优越性。', status: '', paper: 'https://doi.org/10.19595/j.cnki.1000-6753.tces.231393', code: '', bibtex: ''},
     {year: '2023', title: '基于深度学习的恒功率负荷直流微电网稳定性分析', authors: '杨建, 刘笑, 董密, 等', venue: '电力系统自动化 · 2023 · 47(15): 188-197', summary: '针对恒功率负荷(CPL)因负阻抗特性导致直流微电网母线电压失稳的问题，从限制CPL取值范围出发，引入深度学习算法分析系统的稳定性。首先，通过采用直流微电网机理模型仿真，建立初始数据库；然后，对数据库进行预处理，在此基础上，利用最大信息系数进行相关性分析，得到系统参数与CPL临界值之间的相关性强弱信息，并实现输入特征降维；接着，采用自定义损失函数与量化预测性能等方法设计适用于CPL临界值预测的深度学习策略。最后，针对不同场景的直流微电网进行仿真测试，并通过硬件在环实验验证所提深度学习策略的有效性和优越性。', status: '', paper: 'https://doi.org/10.7500/AEPS20221222001', code: '', bibtex: ''}
   ],
-  talks: [], // { title: '报告题目', event: '会议名称', date: '2026-09-13', location: '地点', url: '' }
+  talks: [
+    { title: 'Edge-Intelligent Control of Distributed Photovoltaics Considering Both Benefit and Responsibility Fairness', conference: '2026 IEEE 2nd International Conference on Smart Power and Energy Technologies (IEEE SPET 2026)', location: 'Wuhan, China', type: 'Oral Presentation', year: '2026' }
+  ], // { title: '汇报题目', conference: '会议名称', location: '地点', type: 'Oral Presentation', year: '2026' }
   researchProjects: {
     title: 'Projects',
     note: '科研项目与基金',
