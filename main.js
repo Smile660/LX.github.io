@@ -47,10 +47,17 @@ const emailItem=(label,url)=>{const addr=url.replace(/^mailto:/,'');return `<li 
 document.getElementById('author-links').innerHTML = contacts.filter(([type,label,url]) => label && (['location','institution'].includes(type) || safeURL(url))).map(([type,label,url]) => type==='email' ? emailItem(label,url) : `<li>${icon(type)}${url ? link(label,url) : `<span>${escapeHTML(label)}</span>`}</li>`).join('');
 const emailLi=document.querySelector('.contact-email');
 if(emailLi){
-  emailLi.addEventListener('mouseenter',()=>emailLi.classList.add('open'));
-  emailLi.addEventListener('focusin',()=>emailLi.classList.add('open'));
-  emailLi.addEventListener('click',e=>{if(!e.target.closest('a'))emailLi.classList.remove('open');});
-  emailLi.addEventListener('keydown',e=>{if(e.key==='Escape')emailLi.classList.remove('open');});
+  const setOpen=state=>emailLi.classList.toggle('open',state);
+  const hovering=()=>!emailLi.classList.contains('pinned');
+  emailLi.addEventListener('mouseenter',()=>{if(hovering())setOpen(true);});
+  emailLi.addEventListener('mouseleave',()=>{if(hovering())setOpen(false);});
+  emailLi.addEventListener('focusin',()=>{if(hovering())setOpen(true);});
+  emailLi.addEventListener('focusout',()=>{if(hovering())setOpen(false);});
+  emailLi.addEventListener('click',e=>{
+    if(e.target.closest('a'))return;
+    setOpen(emailLi.classList.toggle('pinned'));
+  });
+  emailLi.addEventListener('keydown',e=>{if(e.key==='Escape'){emailLi.classList.remove('pinned');setOpen(false);}});
 }
 function toggle(buttonId, targetId) {
   const button = document.getElementById(buttonId), target = document.getElementById(targetId);
