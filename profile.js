@@ -9,7 +9,7 @@ window.PROFILE = {
   advisorURL: 'https://ee.scu.edu.cn/info/1044/8389.htm',
   institution: '四川大学 / 电气工程学院',
   location: '中国 · 成都',
-  bio: '关注分布式光伏、虚拟电厂与配电网安全运行，探索面向新能源系统的优化与控制方法。',
+  bio: '关注配电网运行安全与光储边缘智能群控，探索面向新能源系统的优化与控制方法。',
   photo: 'assets/avatar_final.jpg', // 例如 'assets/avatar.jpg'
   email: '2024323030006@stu.scu.edu.cn', // 例如 'yourname@university.edu'
   links: { scholar: '', orcid: '', github: '', researchgate: '', linkedin: '' },
