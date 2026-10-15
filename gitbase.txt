@@ -1,0 +1,37 @@
+# 1. 进入项目文件夹
+cd D:/EDGEdownload/academic-homepage
+
+# 2. 查看当前绑定的远程仓库地址（确认旧地址）
+git remote -v
+
+# 3. 修改远程origin，指向LX.github.io仓库
+git remote set-url origin https://github.com/Smile660/LX.github.io.git
+
+# 4. 再次查看远程，确认已经切换成功
+git remote -v
+
+# 5. （可选）如果本地文件有修改才执行下面两行；现在文件无改动，这两行会提示nothing to commit，可以跳过
+# git add .
+# git commit -m "初始版本，个人学术简历主页"
+
+# 6. 打tag快照 v1.0（附注标签，永久版本，不会覆盖）
+git tag -a v1.0 -m "v1.0 学术主页初始版本"
+
+# 7. 推送main分支代码到LX.github.io仓库
+git push -u origin main
+
+# 8. 把tag版本快照推送到github
+git push origin v1.0
+
+
+
+
+
+
+
+cd D:/EDGEdownload/academic-homepage
+git add .
+git commit -m "更新：本次修改描述"
+git tag -a v1.1 -m "v1.1：更新论文列表"
+git push
+git push origin v1.1
